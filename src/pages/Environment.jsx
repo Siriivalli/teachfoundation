@@ -1,5 +1,8 @@
 import wasteImg from "../assets/waste.png";   // <-- Correct import
 import plasticImg from "../assets/plastic.png"
+import riversImg from "../assets/rivers.png"
+import treesImg from "../assets/trees.png"
+import tourismImg from "../assets/tourism.png"
 export default function Environment() {
   const activities = [
     {
@@ -12,6 +15,22 @@ export default function Environment() {
       desc: "Reducing plastic use is one of the simplest ways to protect the environment and our health. By choosing reusable bags and bottles, properly segregating plastic waste for recycling, and avoiding single‑use items, communities can cut pollution in landfills, streets, and oceans. These small daily actions conserve resources, reduce greenhouse gas emissions, and help keep parks, rivers, and neighborhoods clean for everyone",
       img: plasticImg,  // Replace later with your real image
     },
+    {
+      title: "Clean Himalaya / Clean river missions",
+      desc: "Clean Himalaya and clean river missions aim to protect fragile mountain ecosystems, safeguard drinking water, and preserve the cultural and spiritual value of rivers. These campaigns encourage citizens to remove litter from riverbanks, reduce plastic use, and manage waste responsibly so it does not flow downstream into towns and oceans. By involving local communities, tourists, schools, and NGOs, such initiatives help restore water quality, support biodiversity, and ensure that future generations can enjoy healthy rivers and pristine Himalayan landscapes.",
+      img: riversImg,  // Replace later with your real image
+    },
+    {
+      title: "Tree plantation & Biodiversity projects",
+      desc: "Tree plantation plays a vital role in conserving biodiversity by creating and connecting habitats for countless species of plants, insects, birds, and animals. When native trees are planted and protected, they stabilize soil, enrich it with organic matter, and provide food and shelter that support complex, resilient ecosystems. Large, diverse green areas also act as carbon sinks, help regulate local climate, and maintain clean air and water, which are essential for both wildlife and human communities.",
+      img: treesImg,  // Replace later with your real image
+    },
+    {
+      title: "Sustainable tourism",
+      desc: "Sustainable tourism is a way of traveling that protects the environment, respects local cultures, and benefits local communities. It focuses on reducing pollution and waste, conserving natural resources, and supporting businesses that treat workers fairly. By choosing eco‑friendly transport and stays, avoiding over‑touristed spots, and engaging responsibly with local people and wildlife, travelers help ensure that destinations remain healthy and vibrant for future generations.",
+      img: tourismImg,  // Replace later with your real image
+    },
+    
     // add more activities...
   ];
 
