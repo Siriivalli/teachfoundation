@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
-function App() {
+import Home from "./pages/Home";
+import Programs from "./pages/Programs";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+
+import Environment from "./pages/Environment";
+import Entrepreneurship from "./pages/Entrepreneurship";
+import Education from "./pages/Education";
+import Health from "./pages/Health";
+import Women from "./pages/Women";
+import Rural from "./pages/Rural";
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/programs" element={<Programs />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+
+        <Route path="/programs/environment" element={<Environment />} />
+        <Route path="/programs/entrepreneurship" element={<Entrepreneurship />} />
+        <Route path="/programs/education" element={<Education />} />
+        <Route path="/programs/health" element={<Health />} />
+        <Route path="/programs/women" element={<Women />} />
+        <Route path="/programs/rural" element={<Rural />} />
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
-
-export default App;
