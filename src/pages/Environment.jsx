@@ -3,6 +3,7 @@ import plasticImg from "../assets/plastic.png"
 import riversImg from "../assets/rivers.png"
 import treesImg from "../assets/trees.png"
 import tourismImg from "../assets/tourism.png"
+import { useEffect, useRef, useState } from "react";
 export default function Environment() {
   const activities = [
     {
@@ -33,49 +34,117 @@ export default function Environment() {
     
     // add more activities...
   ];
+   const refs = useRef([]);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  return (
+  useEffect(() => {
+   const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const index = Number(entry.target.getAttribute("data-index"));
+        setActiveIndex(index);
+      }
+    });
+  },
+  {
+    threshold: 0.15,
+    rootMargin: "-150px 0px -150px 0px",
+  }
+);
+
+
+    refs.current.forEach((ref) => ref && observer.observe(ref));
+
+    return () => {
+      refs.current.forEach((ref) => ref && observer.unobserve(ref));
+    };
+  }, []);
+      return (
     <div className="container mx-auto px-6 mt-20">
       <h1 className="text-3xl font-bold text-primary text-center mb-16">
         Environment & Climate Action Timeline
       </h1>
 
       <div className="relative">
-        {/* Vertical Middle Timeline Line */}
-        <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-primary -translate-x-1/2"></div>
 
-        {activities.map((activity, index) => (
-          <div
-            key={index}
-            className="relative flex items-center mb-24"
-          >
-            {/* Left Side Image */}
-            <div className="w-1/2 pr-10 flex justify-end">
-              <img
-                src={activity.img}
-                alt={activity.title}
-                className="w-[380px] h-[250px] object-cover rounded-xl shadow-lg"
-              />
-            </div>
+        {/* BACKGROUND LINE */}
+        <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gray-300 -translate-x-1/2"></div>
 
-            {/* Number Circle */}
-            <div className="absolute left-1/2 -translate-x-1/2 z-10">
-              <div className="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold shadow-md">
-                {index + 1}
+        {/* PROGRESS FILL LINE */}
+        <div
+          className="absolute left-1/2 top-0 w-1 bg-primary -translate-x-1/2 transition-all duration-700"
+          style={{
+            height: `${((activeIndex + 1) / activities.length) * 100}%`,
+          }}
+        ></div>
+
+        {/* Timeline Items */}
+        {activities.map((activity, index) => {
+          const isActive = activeIndex === index;
+          const isLeft = index % 2 === 0; // alternate animation
+
+          return (
+            <div
+              key={index}
+              data-index={index}
+              ref={(el) => (refs.current[index] = el)}
+              className="relative flex items-center mb-32"
+            >
+              {/* IMAGE SIDE */}
+              <div
+                className={`w-1/2 pr-10 flex justify-end transition-all duration-700
+                  ${isActive ? "opacity-100" : "opacity-20"}
+                  ${isActive ? (isLeft ? "translate-x-0" : "translate-x-0") : isLeft ? "-translate-x-16" : "translate-x-16"}
+                `}
+              >
+                <img
+                  src={activity.img}
+                  alt={activity.title}
+                  className="w-[380px] h-[250px] object-cover rounded-xl shadow-lg"
+                />
+              </div>
+
+              {/* NUMBER CIRCLE */}
+              <div className="absolute left-1/2 -translate-x-1/2 z-10">
+                <div
+                  className={`w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold shadow-md transition-all duration-700
+                    ${
+                      activeIndex >= index
+                        ? "bg-primary text-white scale-125"
+                        : "bg-gray-300 text-gray-700 scale-75"
+                    }
+                  `}
+                >
+                  {index + 1}
+                </div>
+              </div>
+
+              {/* TEXT SIDE */}
+              <div
+                className={`w-1/2 pl-10 transition-all duration-700
+                  ${isActive ? "opacity-100" : "opacity-20"}
+                  ${
+                    isActive
+                      ? isLeft
+                        ? "translate-x-0"
+                        : "translate-x-0"
+                      : isLeft
+                      ? "translate-x-16"
+                      : "-translate-x-16"
+                  }
+                `}
+              >
+                <h2 className="text-2xl font-semibold text-primary">
+                  {activity.title}
+                </h2>
+                <p className="text-gray-700 mt-3 leading-relaxed">
+                  {activity.desc}
+                </p>
               </div>
             </div>
-
-            {/* Right Side Text */}
-            <div className="w-1/2 pl-10">
-              <h2 className="text-2xl font-semibold text-primary">
-                {activity.title}
-              </h2>
-              <p className="text-gray-700 mt-3 leading-relaxed">
-                {activity.desc}
-              </p>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
