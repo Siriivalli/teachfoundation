@@ -31,27 +31,27 @@ export default function Environment() {
       desc: "Sustainable tourism is a way of traveling that protects the environment, respects local cultures, and benefits local communities. It focuses on reducing pollution and waste, conserving natural resources, and supporting businesses that treat workers fairly. By choosing eco‑friendly transport and stays, avoiding over‑touristed spots, and engaging responsibly with local people and wildlife, travelers help ensure that destinations remain healthy and vibrant for future generations.",
       img: tourismImg,  // Replace later with your real image
     },
-    
+
     // add more activities...
   ];
-   const refs = useRef([]);
+  const refs = useRef([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-   const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const index = Number(entry.target.getAttribute("data-index"));
-        setActiveIndex(index);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.getAttribute("data-index"));
+            setActiveIndex(index);
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: "-150px 0px -150px 0px",
       }
-    });
-  },
-  {
-    threshold: 0.15,
-    rootMargin: "-150px 0px -150px 0px",
-  }
-);
+    );
 
 
     refs.current.forEach((ref) => ref && observer.observe(ref));
@@ -60,8 +60,8 @@ export default function Environment() {
       refs.current.forEach((ref) => ref && observer.unobserve(ref));
     };
   }, []);
-      return (
-    <div className="container mx-auto px-6 mt-20">
+  return (
+    <div className="max-w-6xl mx-auto px-4 md:px-6 mt-20">
       <h1 className="text-3xl font-bold text-primary text-center mb-16">
         Environment & Climate Action Timeline
       </h1>
@@ -69,11 +69,19 @@ export default function Environment() {
       <div className="relative">
 
         {/* BACKGROUND LINE */}
-        <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gray-300 -translate-x-1/2"></div>
+        <div className="
+        absolute left-1.5 top-0 bottom-0 w-1 bg-gray-300
+        md:left-1/2 md:-translate-x-1/2
+        
+      "></div>
 
         {/* PROGRESS FILL LINE */}
         <div
-          className="absolute left-1/2 top-0 w-1 bg-primary -translate-x-1/2 transition-all duration-700"
+          className="
+          absolute left-1.5 top-0 w-1 bg-primary transition-all duration-700
+          md:left-1/2 md:-translate-x-1/2
+         
+        "
           style={{
             height: `${((activeIndex + 1) / activities.length) * 100}%`,
           }}
@@ -89,11 +97,11 @@ export default function Environment() {
               key={index}
               data-index={index}
               ref={(el) => (refs.current[index] = el)}
-              className="relative flex items-center mb-32"
+              className="relative flex flex-col md:flex-row items-center mb-32"
             >
               {/* IMAGE SIDE */}
               <div
-                className={`w-1/2 pr-10 flex justify-end transition-all duration-700
+                className={`w-full  md:w-1/2 flex justify-end md:pr-10 transition-all duration-700
                   ${isActive ? "opacity-100" : "opacity-20"}
                   ${isActive ? (isLeft ? "translate-x-0" : "translate-x-0") : isLeft ? "-translate-x-16" : "translate-x-16"}
                 `}
@@ -101,18 +109,17 @@ export default function Environment() {
                 <img
                   src={activity.img}
                   alt={activity.title}
-                  className="w-[380px] h-[250px] object-cover rounded-xl shadow-lg"
+                  className="w-full max-w-[350px] md:w-[380px] h-[220px] md:h-[250px] object-cover rounded-xl shadow-lg"
                 />
               </div>
 
               {/* NUMBER CIRCLE */}
-              <div className="absolute left-1/2 -translate-x-1/2 z-10">
+              <div className="absolute left-1.5 md:left-1/2 -translate-x-1/2 z-10">
                 <div
-                  className={`w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold shadow-md transition-all duration-700
-                    ${
-                      activeIndex >= index
-                        ? "bg-primary text-white scale-125"
-                        : "bg-gray-300 text-gray-700 scale-75"
+                  className={`w-9 h-9 md:w-14 md:h-14 rounded-full flex items-center justify-center text-xl font-bold shadow-md transition-all duration-700
+                    ${activeIndex >= index
+                      ? "bg-primary text-white scale-125"
+                      : "bg-gray-300 text-gray-700 scale-75"
                     }
                   `}
                 >
@@ -122,14 +129,13 @@ export default function Environment() {
 
               {/* TEXT SIDE */}
               <div
-                className={`w-1/2 pl-10 transition-all duration-700
+                className={`w-full md:w-1/2 pl-10 transition-all duration-700
                   ${isActive ? "opacity-100" : "opacity-20"}
-                  ${
-                    isActive
-                      ? isLeft
-                        ? "translate-x-0"
-                        : "translate-x-0"
-                      : isLeft
+                  ${isActive
+                    ? isLeft
+                      ? "translate-x-0"
+                      : "translate-x-0"
+                    : isLeft
                       ? "translate-x-16"
                       : "-translate-x-16"
                   }
