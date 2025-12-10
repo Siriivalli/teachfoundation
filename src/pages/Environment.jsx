@@ -66,6 +66,7 @@ export default function Environment() {
         Environment & Climate Action Timeline
       </h1>
 
+      
       <div className="relative">
 
         {/* BACKGROUND LINE */}
@@ -86,7 +87,7 @@ export default function Environment() {
             height: `${((activeIndex + 1) / activities.length) * 100}%`,
           }}
         ></div>
-
+        
         {/* Timeline Items */}
         {activities.map((activity, index) => {
           const isActive = activeIndex === index;
@@ -152,6 +153,11 @@ export default function Environment() {
           );
         })}
       </div>
+      <p className="text-left text-gray-700 mt-10 px-4 md:px-0">
+
+
+         Environment and climate action sit at the heart of our work because a healthy planet is the foundation for every community’s well‑being. Our initiatives span responsible waste management and plastic reduction, clean Himalaya and clean river missions, tree plantation and biodiversity restoration, and the promotion of truly sustainable tourism. By tackling waste and plastic at the source, we prevent pollution on land and in water while encouraging circular use of resources. Through river and mountain clean‑ups, along with large-scale native tree planting, we protect fragile ecosystems, safeguard drinking water, and support wildlife habitats. By engaging citizens, local governments, and businesses in sustainable travel practices, we help ensure that economic growth in these regions does not come at the cost of nature. Together, these focus areas directly align with the highest priorities of CSR programs, government policies, and public expectations, creating visible, measurable impact for both people and the planet.
+      </p>
     </div>
   );
 }

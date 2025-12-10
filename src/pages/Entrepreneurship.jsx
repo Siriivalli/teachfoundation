@@ -63,7 +63,7 @@ export default function Entrepreneurship() {
   return (
     <div className="max-w-6xl mx-auto px-4 md:px-6 mt-20">
       <h1 className="text-3xl font-bold text-primary text-center mb-16">
-        Environment & Climate Action Timeline
+        Entrepreneurship & Innovation Development Timeline
       </h1>
 
       <div className="relative">
@@ -152,6 +152,9 @@ export default function Entrepreneurship() {
           );
         })}
       </div>
+      <p className="text-left text-gray-700 mt-10 px-4 md:px-0">
+        Entrepreneurship and innovation development open pathways for young people to move from job seekers to job creators, especially in a rapidly growing economy like India’s. Startup bootcamps and Startupthon competitions help students and youth validate ideas quickly, learn business basics, and build confidence through mentoring and peer collaboration. Focused initiatives such as women entrepreneurship programs and rural micro-business training ensure that opportunities reach marginalized communities, enabling women and rural youth to earn income, gain dignity, and support their families. Innovation labs in colleges further strengthen this ecosystem by giving students access to modern tools, expert guidance, and an environment where experimentation and failure are treated as essential parts of learning and building impactful solutions.
+      </p>
     </div>
   );
 }

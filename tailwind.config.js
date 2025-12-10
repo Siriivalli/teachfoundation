@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = { 
   content: [
     "./src/**/*.{js,jsx}",
   ],
@@ -7,7 +7,8 @@ module.exports = {
       colors: {
         primary: "#F57C00",
         secondary: "#FFA726",
-      }
+      },
+      
     },
   },
   plugins: [],
