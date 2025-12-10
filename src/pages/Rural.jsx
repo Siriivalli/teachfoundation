@@ -65,7 +65,7 @@ export default function Rural() {
   return (
     <div className="max-w-6xl mx-auto px-4 md:px-6 mt-20">
       <h1 className="text-3xl font-bold text-primary text-center mb-16">
-      Rural department and livelihood
+        Rural department and livelihood
       </h1>
 
       <div className="relative">
@@ -155,7 +155,7 @@ export default function Rural() {
         })}
       </div>
       <p className="text-left text-gray-700 mt-10 px-4 md:px-0">
-       Government, CSR, and NGOs strongly support rural upliftment because rural areas form the backbone of India’s population, agriculture, and economy, yet they face major gaps in education, healthcare, livelihoods, and infrastructure. Investing in rural development creates long-term national growth by reducing poverty, improving living standards, and empowering marginalized communities. For the government, rural progress strengthens social inclusion and economic stability; for CSR, it delivers high-impact, measurable results aligned with sustainability goals; and for NGOs, it provides a ground-level platform to implement meaningful, people-centric development. When all three work together, they bring resources, expertise, innovation, and community trust, leading to stronger livelihoods, better health and education outcomes, women’s empowerment, and overall community resilience. This combined support creates transformational and sustainable change, making rural upliftment one of the most impactful areas for development in India. </p>
+        Government, CSR, and NGOs strongly support rural upliftment because rural areas form the backbone of India’s population, agriculture, and economy, yet they face major gaps in education, healthcare, livelihoods, and infrastructure. Investing in rural development creates long-term national growth by reducing poverty, improving living standards, and empowering marginalized communities. For the government, rural progress strengthens social inclusion and economic stability; for CSR, it delivers high-impact, measurable results aligned with sustainability goals; and for NGOs, it provides a ground-level platform to implement meaningful, people-centric development. When all three work together, they bring resources, expertise, innovation, and community trust, leading to stronger livelihoods, better health and education outcomes, women’s empowerment, and overall community resilience. This combined support creates transformational and sustainable change, making rural upliftment one of the most impactful areas for development in India. </p>
     </div>
   );
 }
